@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class TagihanMember extends Model
+{
+    protected $fillable = [
+        'member_id',
+        'jumlah',
+        'status',
+        'tanggal_tagihan',
+        'tanggal_bayar',
+    ];
+
+    protected $casts = [
+        'tanggal_tagihan' => 'date',
+        'tanggal_bayar' => 'date',
+        'jumlah' => 'decimal:2',
+    ];
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
+}
